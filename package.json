@@ -4,7 +4,7 @@
   "description": "Meme Generator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/kelihansen/meme-generator/issues"
   },
-  "homepage": "https://github.com/kelihansen/meme-generator#readme"
+  "homepage": "https://github.com/kelihansen/meme-generator#readme",
+  "devDependencies": {
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4"
+  }
 }
