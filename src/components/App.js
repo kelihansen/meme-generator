@@ -27,6 +27,17 @@ export default class App extends Component {
   handleImageUrl({ target }) {
     this.setState({ image: target.value });
   }
+
+  handleImageUpload({ target }) {
+    // thanks, Marty
+    const reader = new FileReader();
+
+    reader.readAsDataURL(target.files[0]);
+
+    reader.onload = () => {
+      this.setState({ image: reader.result });
+    };
+  }
   
   render() {
     const { image, header, footer } = this.state;
@@ -43,7 +54,7 @@ export default class App extends Component {
 
         <section className="controls">
           <label>
-          Enter a header for your meme:
+            Enter a header for your meme:
             <input
               type="text"
               value={header}
@@ -52,7 +63,7 @@ export default class App extends Component {
           </label>
 
           <label>
-          Enter a footer for your meme:
+            Enter a footer for your meme:
             <input
               type="text"
               value={footer}
@@ -61,10 +72,18 @@ export default class App extends Component {
           </label>
 
           <label>
-              Enter an image URL:
+            Enter an image URL:
             <input
               type="text"
               onChange={event => this.handleImageUrl(event)}
+            />
+          </label>
+
+          <label>
+            Upload an image:
+            <input
+              type="file"
+              onChange={event => this.handleImageUpload(event)}
             />
           </label>
         </section>
