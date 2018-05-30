@@ -7,4 +7,4 @@ I get to try React, you get to create your own memes (using an image from the in
 Keli Hansen
 
 ## How it works
-Deployed to [https://kelihansen.github.io/meme-generator/]
+Deployed to https://kelihansen.github.io/meme-generator/
