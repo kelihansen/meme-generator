@@ -18,7 +18,8 @@ export default class App extends Component {
     image: starterImage,
     header: 'TEXT',
     footer: 'TEXT',
-    color: '#000000'
+    color: '#000000',
+    textSize: 4.5
   };
 
   handleHeaderChange({ target }) {
@@ -31,6 +32,10 @@ export default class App extends Component {
 
   handleColorChange({ target }) {
     this.setState({ color: target.value });
+  }
+  
+  handleSizeChange({ target }) {
+    this.setState({ textSize: target.value });
   }
 
   handleImageUrl({ target }) {
@@ -54,15 +59,15 @@ export default class App extends Component {
   };
   
   render() {
-    const { image, header, footer, color } = this.state;
+    const { header, footer, color, textSize, image } = this.state;
     return (
       <main>
         <section className="meme">
           <h1>Your Meme</h1>
           <div className="image-wrapper" ref={node => this.imageExport = node}>
             <img src={image} alt="your image"/>
-            <h2 className="header" style={{ color }}>{header}</h2>
-            <h2 className="footer" style={{ color }}>{footer}</h2>
+            <h2 className="header" style={{ color, fontSize: textSize + 'rem', lineHeight: textSize + 'rem' }}>{header}</h2>
+            <h2 className="footer" style={{ color, fontSize: textSize + 'rem', lineHeight: textSize + 'rem' }}>{footer}</h2>
           </div>
           <button onClick={this.handleImageDownload}>
             DOWNLOAD
@@ -93,6 +98,17 @@ export default class App extends Component {
                 type="color"
                 value={color}
                 onChange={event => this.handleColorChange(event)}
+              />
+            </label>
+            <label>
+            Select a text size:
+              <input
+                type="range"
+                min="1"
+                max="8"
+                step="any"
+                value={textSize}
+                onChange={event => this.handleSizeChange(event)}
               />
             </label>
           </fieldset>
