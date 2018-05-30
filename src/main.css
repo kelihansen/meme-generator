@@ -11,7 +11,7 @@ body {
 }
 
 section {
-  width: 50%;
+  width: 60%;
   margin: 2rem auto 0 auto;
   padding: 2rem;
   background-color: white;
@@ -24,6 +24,10 @@ h1 {
 .image-wrapper {
   position: relative;
   margin: 0 auto;  
+}
+
+img {
+  max-width: 95%;  
 }
 
 h2 {

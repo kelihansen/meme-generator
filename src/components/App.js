@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import dom2Image from 'dom-to-image';
 import fileSaver from 'file-saver';
+import starterImage from '../nat-geo-camel.jpg';
 
 export default class App extends Component {
   // I installed the "class properties" Babel plugin, but here's another way to set things up:
@@ -14,7 +15,7 @@ export default class App extends Component {
   // }
 
   state = {
-    image: null,
+    image: starterImage,
     header: 'TEXT',
     footer: 'TEXT'
   };
