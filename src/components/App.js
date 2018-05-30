@@ -97,25 +97,29 @@ export default class App extends Component {
                 onChange={event => this.handleSizeChange('headerSize', event)}
               />
             </label>
-            <label>
+
+            <div className="footer-controls">
+              <label>
             Enter a footer for your meme:
-              <input
-                type="text"
-                value={footer}
-                onChange={event => this.handleFooterChange(event)}
-              />
-            </label>
-            <label>
+                <input
+                  type="text"
+                  value={footer}
+                  onChange={event => this.handleFooterChange(event)}
+                />
+              </label>
+              <label>
             Select a footer size:
-              <input
-                type="range"
-                min="1"
-                max="8"
-                step="any"
-                value={footerSize}
-                onChange={event => this.handleSizeChange('footerSize', event)}
-              />
-            </label>
+                <input
+                  type="range"
+                  min="1"
+                  max="8"
+                  step="any"
+                  value={footerSize}
+                  onChange={event => this.handleSizeChange('footerSize', event)}
+                />
+              </label>
+            </div>
+            
             <label>
             Select a text color:
               <input
@@ -124,9 +128,7 @@ export default class App extends Component {
                 onChange={event => this.handleColorChange(event)}
               />
             </label>
-            
           </fieldset>
-
 
           <fieldset>
             <label>

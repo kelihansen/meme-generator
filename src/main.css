@@ -37,11 +37,11 @@ h2 {
 }
 
 .header {
-  top: 0.5rem;
+  top: 1rem;
 }
 
 .footer {
-  bottom: 0.5rem;
+  bottom: 1rem;
 }
 
 label {
@@ -59,8 +59,12 @@ fieldset {
   border-style: solid;
 }
 
-fieldset:nth-child(2) {
+.controls fieldset {
   margin-top: 1rem;
+}
+
+.footer-controls {
+  margin: 2rem 0;
 }
 
 input[type="file"] {
