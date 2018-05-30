@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kelihansen/meme-generator#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
     "webpack": "^4.10.1",
     "webpack-cli": "^2.1.4"
   }
