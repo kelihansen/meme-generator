@@ -17,6 +17,10 @@ section {
   background-color: white;
 }
 
+label {
+  display: block;
+}
+
 input {
   margin: 0.5rem;
 }
