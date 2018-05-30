@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import dom2Image from 'dom-to-image';
+import fileSaver from 'file-saver';
 
 export default class App extends Component {
   // I installed the "class properties" Babel plugin, but here's another way to set things up:
@@ -7,6 +9,7 @@ export default class App extends Component {
   //  super();
   //  this.state = {
   //    header: 'HEADER TEXT'
+  //    etc.
   //  };
   // }
 
@@ -29,7 +32,6 @@ export default class App extends Component {
   }
 
   handleImageUpload({ target }) {
-    // thanks, Marty
     const reader = new FileReader();
 
     reader.readAsDataURL(target.files[0]);
@@ -38,6 +40,12 @@ export default class App extends Component {
       this.setState({ image: reader.result });
     };
   }
+
+  handleImageDownload = () => {
+    dom2Image.toBlob(this.imageExport).then(blob => {
+      fileSaver.saveAs(blob, 'my-meme.png');
+    });
+  };
   
   render() {
     const { image, header, footer } = this.state;
@@ -45,11 +53,14 @@ export default class App extends Component {
       <main>
         <section className="meme">
           <h1>Your Meme</h1>
-          <div className="image-wrapper">
+          <div className="image-wrapper" ref={node => this.imageExport = node}>
             <img src={image} alt="your image"/>
             <h2 className="header">{header}</h2>
             <h2 className="footer">{footer}</h2>
           </div>
+          <button onClick={this.handleImageDownload}>
+            DOWNLOAD
+          </button>
         </section>
 
         <section className="controls">
