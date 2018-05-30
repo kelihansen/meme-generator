@@ -17,6 +17,30 @@ section {
   background-color: white;
 }
 
+h1 {
+  margin-bottom: 1rem;
+}
+
+.image-wrapper {
+  position: relative;
+  margin: 0 auto;  
+}
+
+h2 {
+  position: absolute;
+  font-size: 4em;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  top: 0;
+}
+
+.footer {
+  bottom: 0;
+}
+
 label {
   display: block;
 }

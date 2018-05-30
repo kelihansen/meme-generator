@@ -11,6 +11,7 @@ export default class App extends Component {
   // }
 
   state = {
+    image: null,
     header: 'TEXT',
     footer: 'TEXT'
   };
@@ -19,18 +20,25 @@ export default class App extends Component {
     this.setState({ header: target.value });
   }
 
-  handleHooterChange({ target }) {
+  handleFooterChange({ target }) {
     this.setState({ footer: target.value });
+  }
+
+  handleImageUrl({ target }) {
+    this.setState({ image: target.value });
   }
   
   render() {
-    const { header, footer } = this.state;
+    const { image, header, footer } = this.state;
     return (
       <main>
         <section className="meme">
           <h1>Your Meme</h1>
-          <h2>{header}</h2>
-          <h2>{footer}</h2>
+          <div className="image-wrapper">
+            <img src={image} alt="your image"/>
+            <h2 className="header">{header}</h2>
+            <h2 className="footer">{footer}</h2>
+          </div>
         </section>
 
         <section className="controls">
@@ -42,12 +50,21 @@ export default class App extends Component {
               onChange={event => this.handleHeaderChange(event)}
             />
           </label>
+
           <label>
           Enter a footer for your meme:
             <input
               type="text"
               value={footer}
               onChange={event => this.handleFooterChange(event)}
+            />
+          </label>
+
+          <label>
+              Enter an image URL:
+            <input
+              type="text"
+              onChange={event => this.handleImageUrl(event)}
             />
           </label>
         </section>
