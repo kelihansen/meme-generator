@@ -10,5 +10,8 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin('docs/bundle.js')
-  ]
+  ],
+  devServer: {
+    contentBase: './docs'
+  }
 }
