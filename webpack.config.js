@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin('docs'),
     new HtmlWebpackPlugin({
-      title: 'Meme Generator'
+      template: 'src/index.html'
     })
   ],
   devServer: {

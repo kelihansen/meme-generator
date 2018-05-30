@@ -5,5 +5,5 @@ const component = <div>Hello, world!</div>;
 
 ReactDOM.render(
   component,
-  document.body
+  document.getElementById('root')
 );
