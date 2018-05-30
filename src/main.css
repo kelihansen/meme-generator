@@ -53,6 +53,20 @@ input {
   margin: 0.5rem;
 }
 
+fieldset {
+  max-width: 95%;
+  padding: 0.5rem;
+}
+
+fieldset:nth-child(2) {
+  margin-top: 1rem;
+}
+
+input[type="file"] {
+  margin-right: -4.5rem;
+}
+
 button {
+  margin-top: 1rem;
   padding: 0.5rem;
 }

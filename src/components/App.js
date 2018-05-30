@@ -17,7 +17,8 @@ export default class App extends Component {
   state = {
     image: starterImage,
     header: 'TEXT',
-    footer: 'TEXT'
+    footer: 'TEXT',
+    color: '#000000'
   };
 
   handleHeaderChange({ target }) {
@@ -26,6 +27,10 @@ export default class App extends Component {
 
   handleFooterChange({ target }) {
     this.setState({ footer: target.value });
+  }
+
+  handleColorChange({ target }) {
+    this.setState({ color: target.value });
   }
 
   handleImageUrl({ target }) {
@@ -49,15 +54,15 @@ export default class App extends Component {
   };
   
   render() {
-    const { image, header, footer } = this.state;
+    const { image, header, footer, color } = this.state;
     return (
       <main>
         <section className="meme">
           <h1>Your Meme</h1>
           <div className="image-wrapper" ref={node => this.imageExport = node}>
             <img src={image} alt="your image"/>
-            <h2 className="header">{header}</h2>
-            <h2 className="footer">{footer}</h2>
+            <h2 className="header" style={{ color }}>{header}</h2>
+            <h2 className="footer" style={{ color }}>{footer}</h2>
           </div>
           <button onClick={this.handleImageDownload}>
             DOWNLOAD
@@ -65,39 +70,53 @@ export default class App extends Component {
         </section>
 
         <section className="controls">
-          <label>
+          <fieldset>
+            <label>
             Enter a header for your meme:
-            <input
-              type="text"
-              value={header}
-              onChange={event => this.handleHeaderChange(event)}
-            />
-          </label>
-
-          <label>
+              <input
+                type="text"
+                value={header}
+                onChange={event => this.handleHeaderChange(event)}
+              />
+            </label>
+            <label>
             Enter a footer for your meme:
-            <input
-              type="text"
-              value={footer}
-              onChange={event => this.handleFooterChange(event)}
-            />
-          </label>
+              <input
+                type="text"
+                value={footer}
+                onChange={event => this.handleFooterChange(event)}
+              />
+            </label>
+            <label>
+            Select a text color:
+              <input
+                type="color"
+                value={color}
+                onChange={event => this.handleColorChange(event)}
+              />
+            </label>
+          </fieldset>
 
-          <label>
-            Enter an image URL:
-            <input
-              type="text"
-              onChange={event => this.handleImageUrl(event)}
-            />
-          </label>
 
-          <label>
+          <fieldset>
+            <label>
+            Enter a new image URL:
+              <input
+                type="text"
+                onChange={event => this.handleImageUrl(event)}
+              />
+            </label>
+
+            <p>OR</p>
+
+            <label>
             Upload an image:
-            <input
-              type="file"
-              onChange={event => this.handleImageUpload(event)}
-            />
-          </label>
+              <input
+                type="file"
+                onChange={event => this.handleImageUpload(event)}
+              />
+            </label>
+          </fieldset>
         </section>
       </main>
     );
