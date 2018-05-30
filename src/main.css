@@ -55,7 +55,9 @@ input {
 
 fieldset {
   max-width: 95%;
+  margin: 0 auto;  
   padding: 0.5rem;
+  border-style: solid;
 }
 
 fieldset:nth-child(2) {
