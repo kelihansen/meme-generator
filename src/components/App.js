@@ -19,7 +19,8 @@ export default class App extends Component {
     header: 'TEXT',
     footer: 'TEXT',
     color: '#000000',
-    textSize: 4.5
+    headerSize: 4.5,
+    footerSize: 4.5
   };
 
   handleHeaderChange({ target }) {
@@ -34,12 +35,13 @@ export default class App extends Component {
     this.setState({ color: target.value });
   }
   
-  handleSizeChange({ target }) {
-    this.setState({ textSize: target.value });
+  handleSizeChange(property, { target }) {
+    this.setState({ [property]: target.value });
   }
 
   handleImageUrl({ target }) {
-    this.setState({ image: target.value });
+    const image = target.value || starterImage;
+    this.setState({ image });
   }
 
   handleImageUpload({ target }) {
@@ -59,15 +61,15 @@ export default class App extends Component {
   };
   
   render() {
-    const { header, footer, color, textSize, image } = this.state;
+    const { header, footer, color, headerSize, footerSize, image } = this.state;
     return (
       <main>
         <section className="meme">
           <h1>Your Meme</h1>
           <div className="image-wrapper" ref={node => this.imageExport = node}>
             <img src={image} alt="your image"/>
-            <h2 className="header" style={{ color, fontSize: textSize + 'rem', lineHeight: textSize + 'rem' }}>{header}</h2>
-            <h2 className="footer" style={{ color, fontSize: textSize + 'rem', lineHeight: textSize + 'rem' }}>{footer}</h2>
+            <h2 className="header" style={{ color, fontSize: headerSize + 'rem', lineHeight: headerSize + 'rem' }}>{header}</h2>
+            <h2 className="footer" style={{ color, fontSize: footerSize + 'rem', lineHeight: footerSize + 'rem' }}>{footer}</h2>
           </div>
           <button onClick={this.handleImageDownload}>
             DOWNLOAD
@@ -85,11 +87,33 @@ export default class App extends Component {
               />
             </label>
             <label>
+            Select a header size:
+              <input
+                type="range"
+                min="1"
+                max="8"
+                step="any"
+                value={headerSize}
+                onChange={event => this.handleSizeChange('headerSize', event)}
+              />
+            </label>
+            <label>
             Enter a footer for your meme:
               <input
                 type="text"
                 value={footer}
                 onChange={event => this.handleFooterChange(event)}
+              />
+            </label>
+            <label>
+            Select a footer size:
+              <input
+                type="range"
+                min="1"
+                max="8"
+                step="any"
+                value={footerSize}
+                onChange={event => this.handleSizeChange('footerSize', event)}
               />
             </label>
             <label>
@@ -100,17 +124,7 @@ export default class App extends Component {
                 onChange={event => this.handleColorChange(event)}
               />
             </label>
-            <label>
-            Select a text size:
-              <input
-                type="range"
-                min="1"
-                max="8"
-                step="any"
-                value={textSize}
-                onChange={event => this.handleSizeChange(event)}
-              />
-            </label>
+            
           </fieldset>
 
 
